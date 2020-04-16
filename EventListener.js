@@ -1,0 +1,135 @@
+function CreateNewPoint(canvas, event) { 
+	let rect = canvas.getBoundingClientRect(); 
+
+	//offset:10, due to mouse position
+	let x = event.clientX - 10; //- rect.left; 
+	let y = event.clientY - 10; //- rect.top; 
+
+	//animate counter
+	changeTotalPointCount(1);
+
+	//add new Point
+	var newPoint = new Point(x, y);
+	points.push(newPoint);
+
+	//make html object
+	var node = document.createElement("div"); 
+	node.className = "point"
+	node.style.left = x + "px";
+	node.style.top = y + "px";
+
+	document.body.append(node);  //append to canvas bug: z-axis
+
+	//add to dictionary for acess later on
+	point_html.set(newPoint, node);
+	html_point.set(node, newPoint);
+} 
+      
+//custom context-menu
+document.addEventListener('click',function(e){
+	//disables contextmenu
+
+	//right click on a node to open contextmenu
+	if(e.target && e.target.id == 'sandbox' && e.which == 1){
+		CreateNewPoint(document.getElementById("sandbox"), event); 
+		CloseNodeMenu();
+	}
+	else{
+		CloseNodeMenu();
+	}
+});
+
+//current option: delete node
+var selectedNode = null;
+function OpenNodeMenu(node){
+	selectedNode = node
+
+	let canvas = document.getElementById("sandbox").getBoundingClientRect();
+	var x = html_point.get(node).x + 30;
+	var y = html_point.get(node).y - canvas.top - 10;
+	console.log("Point coordinates: ",html_point.get(node).x,html_point.get(node).y);
+
+	//dont add context menu to html DOM
+	//take existing element and enable it on certain position
+	var contextmenu = document.getElementById("context-menu");
+
+	contextmenu.style.left = x + "px";
+	contextmenu.style.top = y + "px";
+	contextmenu.className = "dropdown open";
+}
+
+function CloseNodeMenu(){
+	var contextmenu = document.getElementById("context-menu");
+	contextmenu.className = "dropdown";
+}
+
+function DeleteNode(){
+	//animate counter
+	changeTotalPointCount(-1);
+	var point = html_point.get(selectedNode);
+
+	//redraw if hull-1 > 2
+	if(selectedNode.className == "point-hull"){
+		//remove from points list 
+		//points.splice( points.indexOf(point), 1);
+		hull.splice( hull.indexOf(point), 1);
+
+		//remove from WeakMap
+		html_point.delete(selectedNode);
+		point_html.delete(point);
+		$(selectedNode).remove();
+		points.splice( points.indexOf(point), 1);
+		//when hull without that point is possible -> make new one
+		if(points.length + hull.length  >= 3){
+			Visualize();
+		}
+		else{
+			$('.line').remove();
+			var leftover_points = document.querySelectorAll(".point-hull");
+			for(var i = 0; i<leftover_points.length; i++){
+				leftover_points[i].setAttribute("class", "point");
+				points.push(html_point.get(leftover_points[i]));
+				hull = [];
+			}
+		}
+	}
+	else{
+		//remove node from DOM
+		selectedNode.remove();
+
+		//remove from points list 
+		points.splice( points.indexOf(point), 1);
+
+		//remove from WeakMap
+		html_point.delete(selectedNode);
+		point_html.delete(point);
+	}
+
+
+
+}
+
+//listener for right click
+//adds point and closes context-menu
+document.addEventListener('contextmenu',function(e){
+	//disables contextmenu
+	e.preventDefault()
+
+	//right click on a node to open contextmenu
+	if(e.target && (e.target.className == 'point' || e.target.className == 'point-hull')){
+		OpenNodeMenu(e.target);
+	}
+	else{
+		CloseNodeMenu();
+	}
+});
+
+
+
+
+
+
+
+
+
+
