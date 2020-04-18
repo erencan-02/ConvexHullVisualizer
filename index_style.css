@@ -7152,7 +7152,7 @@ html, body {margin: 0; height: 100%; overflow: hidden}
   position: absolute;
   background-color: #1abc9c;
   border-radius: 100%;
-  z-index: 3;
+  z-index: 4;
   height: 25px;
   width: 25px;
   cursor: pointer;
@@ -7190,7 +7190,7 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 }
 
 #path-container{
-  z-index: 2;
+  z-index: 3;
   position: absolute;
   top: 0;
   left: 0;
