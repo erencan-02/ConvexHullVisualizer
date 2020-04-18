@@ -72,7 +72,7 @@ function changePage(z){
 	}else if(currentPage == 5){
 		tut_header_3.innerHTML = "Visualize!";
 		tut_header_6.innerHTML = "Select an algorithm and click on the \'Visualize!\' button";
-		tut_image.src = "images/tutorial/algorithms.png";
+		tut_image.src = "images/tutorial/algorithms.PNG";
 		tut_image.style.width = "180px";
 		tut_nextBtn.innerHTML = "Finish";
 		tut_nextBtn.setAttribute('onclick','skipTutorial()')
