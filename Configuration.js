@@ -58,6 +58,7 @@ function Visualize(){
 		default:
     		break;
 	}
+	UpdatePointCounters();
 }
 
 function Reset(){
@@ -70,11 +71,7 @@ function Reset(){
 
 	//delete lines
 	$('.line').remove();
-
-	//reset counters
-	//changeTotalPointCount(-points.length);
-	changeHullCount(0);
-
+	UpdatePointCounters();
 }
 
 function DisableButtons(){

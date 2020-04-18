@@ -58,7 +58,6 @@ function ConvexHull_GiftWrapping(){
 
 	hull.forEach(el => point_html.get(el).className = "point-hull");
 	ConnectHull();
-	changeHullCount(hull.length);
 	isRunning = false;
 	EnableButtons();
 }

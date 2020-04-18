@@ -7,9 +7,6 @@ function CreateNewPoint(canvas, event) {
 	let x = event.clientX - 10; //- rect.left; 
 	let y = event.clientY - 10; //- rect.top; 
 
-	//animate counter
-	changeTotalPointCount(1);
-
 	//add new Point
 	var newPoint = new Point(x, y);
 	points.push(newPoint);
@@ -29,6 +26,7 @@ function CreateNewPoint(canvas, event) {
 	latestAction = newPoint;
 
 	AnimatePoint(node);
+	UpdatePointCounters();
 } 
       
 //custom context-menu
@@ -69,9 +67,6 @@ function CloseNodeMenu(){
 }
 
 function DeleteNode(){
-	//animate counter
-	changeTotalPointCount(-1);
-
 	var point = html_point.get(selectedNode);
 
 	//redraw if hull-1 > 2
@@ -111,12 +106,15 @@ function DeleteNode(){
 		point_html.delete(point);
 	}
 
-
-
+	UpdatePointCounters();
 }
 
-function undo(){
+function UpdatePointCounters(){
+	var count_points = $('.point').length;
+	var count_pointsHull = $('.point-hull').length;
 
+	changeTotalPointCount(count_points + count_pointsHull);
+	changeTotalHullCount(count_pointsHull);
 }
 
 //listener for right click

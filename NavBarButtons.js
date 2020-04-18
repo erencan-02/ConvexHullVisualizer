@@ -1,9 +1,6 @@
 
 //no click required
-function CreateAutoPoint(x, y){
-	//animate counter
-	changeTotalPointCount(1);
-	
+function CreateAutoPoint(x, y){	
 	var newPoint = new Point(x, y);
 	points.push(newPoint);
 
@@ -13,7 +10,6 @@ function CreateAutoPoint(x, y){
 	node.style.left = x + "px";
 	node.style.top = y + "px";
 	//node.style.zIndex = "30";
-
 
 	document.body.append(node);  //append to canvas bug: z-axis
 
@@ -30,19 +26,15 @@ function clearNodes(){
 	$('.point-hull').remove();
 	$('.line').remove();
 
-	//animate counter
-	changeTotalPointCount(-points.length);
-	changeHullCount(0);
-
 	//remove from list
 	html_point = new WeakMap();
 	point_html = new WeakMap();
 	points = [];
+	UpdatePointCounters();
 }
 
 function removeHull(){
 	$('.line').remove();
-	changeHullCount(0);
 	var hull_points = $('.point-hull');
 	for(var i = 0; i<hull_points.length; i++){
 		AnimatePoint(hull_points[i]);
@@ -50,6 +42,7 @@ function removeHull(){
 		points.push(html_point.get(hull_points[i]));
 		hull = [];
 	}
+	UpdatePointCounters();
 }
 
 function randomPoints(){
@@ -68,6 +61,7 @@ function randomPoints(){
 		var pos_y = Math.random() * y_max + y_min;
 		CreateAutoPoint(pos_x, pos_y);
 	}
+	UpdatePointCounters();
 }
 
 function openTutorial(){

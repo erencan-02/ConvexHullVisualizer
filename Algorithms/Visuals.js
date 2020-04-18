@@ -11,28 +11,17 @@ function disconnectTwoPoints(line){
 	DeleteNewPath(line);
 }
 
-
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-
-
-
-function changeTotalPointCount(x){
-	var currentTotal = points.length;
-
+function changeTotalPointCount(total){
 	anime({
 	  targets: '#totalPoints',
-	  value: [currentTotal, currentTotal+x],
+	  value: [0, total],
 	  round: 1,
 	  easing: 'easeInOutExpo',
 	  duration: 1000
 	});
 }
 
-function changeHullCount(total){
+function changeTotalHullCount(total){
 	anime({
 	  targets: '#totalHullPoints',
 	  value: [0, total],

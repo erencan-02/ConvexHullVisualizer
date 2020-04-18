@@ -31,7 +31,12 @@ function skipTutorial(){
 }
 
 function changePage(z){
-	if(currentPage + z < 1 || currentPage + z > totalPages){
+	if(currentPage + z < 1){
+		return;
+	}
+
+	if(currentPage + z > totalPages){
+		skipTutorial();
 		return;
 	}
 
