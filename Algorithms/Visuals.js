@@ -45,7 +45,7 @@ function changeHullCount(total){
 function AnimateLine(pathElement){
 	var speed;
 	switch(currentSelectedSpeed){
-		case 'Skip animations':
+		case 'Super Sonic':
 			speed = 0;
 			break;
 		case 'Fast':
@@ -98,4 +98,16 @@ function MakeNewPath(p1, p2){
 
 function DeleteNewPath(line){
 
+}
+
+function AnimatePoint(node){
+	anime({
+  		targets: node,
+  		delay: -400,
+  		scale: [1, 1.3, 1],
+  		duration: 800,
+  		easing: 'easeInOutQuad',
+  		direction: 'alternate',
+  		loop: false
+	});
 }

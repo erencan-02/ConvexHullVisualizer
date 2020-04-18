@@ -1,3 +1,5 @@
+var latestAction;
+
 function CreateNewPoint(canvas, event) { 
 	let rect = canvas.getBoundingClientRect(); 
 
@@ -18,11 +20,15 @@ function CreateNewPoint(canvas, event) {
 	node.style.left = x + "px";
 	node.style.top = y + "px";
 
+
 	document.body.append(node);  //append to canvas bug: z-axis
 
 	//add to dictionary for acess later on
 	point_html.set(newPoint, node);
 	html_point.set(node, newPoint);
+	latestAction = newPoint;
+
+	AnimatePoint(node);
 } 
       
 //custom context-menu
@@ -47,7 +53,6 @@ function OpenNodeMenu(node){
 	let canvas = document.getElementById("sandbox").getBoundingClientRect();
 	var x = html_point.get(node).x + 30;
 	var y = html_point.get(node).y - canvas.top - 10;
-	console.log("Point coordinates: ",html_point.get(node).x,html_point.get(node).y);
 
 	//dont add context menu to html DOM
 	//take existing element and enable it on certain position
@@ -66,6 +71,7 @@ function CloseNodeMenu(){
 function DeleteNode(){
 	//animate counter
 	changeTotalPointCount(-1);
+
 	var point = html_point.get(selectedNode);
 
 	//redraw if hull-1 > 2
@@ -109,6 +115,10 @@ function DeleteNode(){
 
 }
 
+function undo(){
+
+}
+
 //listener for right click
 //adds point and closes context-menu
 document.addEventListener('contextmenu',function(e){
@@ -126,7 +136,29 @@ document.addEventListener('contextmenu',function(e){
 
 
 
+//key listener
+$(document).keydown(function(e) {
+	//esc
+	if (e.keyCode === 27) skipTutorial(); 
+	if (e.ctrlKey && e.keyCode == 89) removeHull(); //ctrl + x
+	if (e.ctrlKey && e.keyCode == 88) clearNodes(); //ctrl + y
+	if (e.ctrlKey && e.keyCode == 90) undo();
+	if (e.ctrlKey && e.keyCode == 66) Visualize();
+	if (e.keyCode == 72) openTutorial();
+	if (e.keyCode == 82) randomPoints();
 
+	//Tutorial menu
+	if(e.keyCode == 39) changePage(1);
+	if(e.keyCode == 37) changePage(-1);
+
+ 	//Algorithm selection
+  	if(e.keyCode == 49) setStartButtonValue("Gift Wrapping");
+	if(e.keyCode == 50) setStartButtonValue("Graham Scan");
+	if(e.keyCode == 51) setStartButtonValue("Quickhull");
+	if(e.keyCode == 52) setStartButtonValue("DAC");
+	if(e.keyCode == 53) setStartButtonValue("Monotone Chain");
+	if(e.keyCode == 54) setStartButtonValue("Chan\'s Algorithm");
+});
 
 
 

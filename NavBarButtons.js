@@ -20,6 +20,8 @@ function CreateAutoPoint(x, y){
 	//add to dictionary for acess later on
 	point_html.set(newPoint, node);
 	html_point.set(node, newPoint);
+
+	AnimatePoint(node);
 }
 
 function clearNodes(){
@@ -40,8 +42,10 @@ function clearNodes(){
 
 function removeHull(){
 	$('.line').remove();
+	changeHullCount(0);
 	var hull_points = $('.point-hull');
 	for(var i = 0; i<hull_points.length; i++){
+		AnimatePoint(hull_points[i]);
 		hull_points[i].setAttribute("class", "point");
 		points.push(html_point.get(hull_points[i]));
 		hull = [];
@@ -64,4 +68,15 @@ function randomPoints(){
 		var pos_y = Math.random() * y_max + y_min;
 		CreateAutoPoint(pos_x, pos_y);
 	}
+}
+
+function openTutorial(){
+	var blockPage = document.getElementById("blockPage");
+	var tutorial = document.getElementById("tutorial");
+
+	tutorial.style.visibility = "visible";  
+	tutorial.style.opacity = 1;
+	blockPage.style.visibility = "visible";
+
+	changePage(-currentPage + 1);
 }

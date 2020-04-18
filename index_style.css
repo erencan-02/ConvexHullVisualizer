@@ -1,14 +1,8 @@
-/*.demonstration {
-  border: 2px solid green;
-}
+/* Copyright © 2020 clementmihailescu
+   https://github.com/clementmihailescu/Pathfinding-Visualizer/blob/master/public/styling/cssPokemon.css
+*/
 
-.other {
-  border: 2px solid red;
-}
 
-.otherother {
-  border: 2px solid grey;
-}*/
 
 .start{
   /*border: 1px solid rgb(175, 216, 248);*/
@@ -399,7 +393,7 @@
   list-style: none;
   padding-bottom: 5px;
   padding-right: 40px;
-  font-size: 14px;
+  /*font-size: 14px;*/
 }
 
 /*#otherText > ul li {
@@ -7136,13 +7130,6 @@ html, body {margin: 0; height: 100%; overflow: hidden}
   top:7.5%;
 }
 
-@keyframes expand {
-  from {
-    transform: scale(0);
-    opacity: 0;
-    background: #5470B0;
-  }
-}
 
 @keyframes changecolor {
   from {
@@ -7152,13 +7139,12 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 
 .point{
   position: absolute;
-  background-color: #34495e;
+  background-color: var(--point-color);
   border-radius: 100%;
   z-index: 2;
   height: 25px;
   width: 25px;
   cursor: pointer;
-  animation: expand .5s ease-in-out;
 }
 
 
@@ -7174,14 +7160,12 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 }
 
 .point:hover{
-  width:28px;
-  height:28px;
+  background-color: #141d25;
   transition: 0.5s;
 }
 
 .point-hull:hover {
-  width:28px;
-  height:28px;
+  background-color: #0a4b3e;
   transition: 0.5s;
 }
 
@@ -7199,12 +7183,11 @@ html, body {margin: 0; height: 100%; overflow: hidden}
 .line{
   z-index: 2;
   stroke-width: 8;
-  stroke: #afd8f8;
+  /*stroke: #afd8f8;*/
   position: absolute;
-
-
+  /*stroke:#11ffa0;*/
+  stroke: var(--line-color);
 }
-
 
 #path-container{
   z-index: 2;
@@ -7214,4 +7197,60 @@ html, body {margin: 0; height: 100%; overflow: hidden}
   height:100%;
   width:100%;
   pointer-events: none;
+}
+
+#tutorial{
+  position: relative;
+  left:-25%;
+  top: 20%;
+}
+
+
+
+#blockPage{
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  left: 0; 
+  top:0;
+  min-width: 1000px;
+  max-width: 3000px;
+  min-height: 500px;
+}
+
+#openTutorial{
+  right: 0px;
+  float: right;
+}
+
+#book-image{
+  height: 30px;
+  width: 30px;
+  transition: 0.5s;
+}
+
+.color-button{
+  border:none;
+  border-radius: 4px;
+}
+
+#note{
+  position: relative;
+  bottom: 3%;
+}
+
+#algorithm-list li b{
+  font-size: 25px;
+}
+
+#algorithm-list li{
+  font-size: 18px;
+}
+
+
+:root {
+    --line-color: #11ffa0;
+    --point-color: #34495e;
 }

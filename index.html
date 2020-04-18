@@ -3,9 +3,8 @@
 <head>
 	<title>Convex Hull Visualizer</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link id="cssTheme" rel="stylesheet" href="index_style.css" />
-	<!--<link rel="shortcut icon" type="image/png" href="public/styling/c_icon.png" />-->
-
+	<link id="cssTheme" rel="stylesheet" href="index_style.css"/>
+	<link rel="shortcut icon" href="images/logo.ico">
 </head>
 
 <body>
@@ -13,66 +12,89 @@
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a id="refreshButton" class="navbar-brand" href="https://github.com/erencan-02" target="_blank">
-						<!--<img src="logo.ico" style="position: absolute; width: 50; height:50;">-->
+					<img src="images/logo.png" style="position: absolute; width: 50; height:45; left:0px; top:0px" >
+					<a id="refreshButton" class="navbar-brand" href="https://github.com/erencan-02" target="_blank" style="position: relative; left:30px;">
 					Convex Hull Visualizer
 					</a>
 				</div>
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav" style="position:relative; left:20px;">
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Algorithms
-							<span class="caret"></span>
-						</a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Algorithms<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li id='startButtonGift' onclick="setStartButtonValue('Gift Wrapping')"><a href="#">Gift Wrapping</a></li>
-							<li id='startButtonGraham' onclick="setStartButtonValue('Graham Scan')"><a href="#">Graham Scan</a></li>
-							<li id='startButtonQuickhull' onclick="setStartButtonValue('Quickhull')"><a href="#">Quickhull</a></li>
-							<li id='startButtonDAC' onclick="setStartButtonValue('Divide and Conquer')"><a href="#">Divide and Conquer</a></li>
-							<li id='startButtonMonoChain' onclick="setStartButtonValue('Monotone Chain')"><a href="#">Monotone Chain</a></li>
-							<li id='startButtonChan' onclick="setStartButtonValue('Chan\'s Algorithm')"><a href="#">Chan's Algorithm</a></li>
+							<li id='startButtonGift' onclick="setStartButtonValue('Gift Wrapping')" title="1"><a href="#">Gift Wrapping</a></li>
+							<li id='startButtonGraham' onclick="setStartButtonValue('Graham Scan')" title="2"><a href="#">Graham Scan</a></li>
+							<li id='startButtonQuickhull' onclick="setStartButtonValue('Quickhull')" title="3"><a href="#">Quickhull</a></li>
+							<li id='startButtonDAC' onclick="setStartButtonValue('DAC')" title="Comming soon"><a href="#">Divide and Conquer</a></li>
+							<li id='startButtonMonoChain' onclick="setStartButtonValue('Monotone Chain')" title="5"><a href="#">Monotone Chain</a></li>
+							<li id='startButtonChan' onclick="setStartButtonValue('Chan\'s Algorithm')" title="Comming soon"><a href="#">Chan's Algorithm</a></li>
 						</ul>
 					</li>
 					
-                        <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">Mazes &amp; Patterns
-             <span class="caret"></span></a>
-             <ul class="dropdown-menu">
-               <li id='startButtonCreateMazeTwo'><a href="#">Recursive Division</a></li>
-               <li id='startButtonCreateMazeThree'><a href="#">Recursive Division (vertical skew)</a></li>
-               <li id='startButtonCreateMazeFour'><a href="#">Recursive Division (horizontal skew)</a></li>
-               <li id='startButtonCreateMazeOne'><a href="#">Basic Random Maze</a></li>
-               <li id='startButtonCreateMazeWeights'><a href="#">Basic Weight Maze</a></li>
-               <li id='startStairDemonstration'><a href="#">Simple Stair Pattern</a></li>
-             </ul>
-           </li>-->
-           			<li id='startButtonClearBoard' onclick="randomPoints()"><a href="#">Random</a></li>
+           			<li id='startButtonClearBoard' onclick="randomPoints()" title="R"><a href="#">Random</a></li>
 					
 					<li id='startButtonStart'>
-						<button id="actualStartButton" class="btn btn-default navbar-btn" type="button" onclick="Visualize()">Visualize!</button>
+						<button id="actualStartButton" class="btn btn-default navbar-btn" type="button" title="CTRL + B" onclick="Visualize()">Visualize!</button>
 					</li>
-					<li id='startButtonClearBoard' onclick="clearNodes()"><a href="#">Clear</a></li>
-					<li id='startButtonRemoveHull' onclick="removeHull()"><a href="#">Remove Hull</a></li>
+
+					<li id='startButtonClearBoard' title="CTRL + X" onclick="clearNodes()"><a href="#">Clear</a></li>
+
+					<li id='startButtonRemoveHull' title="CTRL + Y" onclick="removeHull()"><a href="#">Remove Hull</a></li>
 
 					<li class="dropdown">
-					<a id="adjustSpeed" class="dropdown-toggle" data-toggle="dropdown" href="#">Speed: Fast
-					<span class="caret"></span></a>
-					
-					<ul class="dropdown-menu" id="algorithms-dropdown-menu">
-						<li id='skipAnimations' onclick="setSpeedButtonValue('Skip animations')"><a href="#">Skip animations</a></li>
-						<li id='adjustFast' onclick="setSpeedButtonValue('Fast')"><a href="#">Fast</a></li>
-						<li id='adjustAverage' onclick="setSpeedButtonValue('Average')"><a href="#">Average</a></li>
-						<li id='adjustSlow' onclick="setSpeedButtonValue('Slow')"><a href="#">Slow</a></li>
-					</ul>
-					
+						<a id="adjustSpeed" class="dropdown-toggle" data-toggle="dropdown" href="#">Speed: Fast<span class="caret"></span></a>
+						<ul class="dropdown-menu" id="algorithms-dropdown-menu">
+							<li id='skipAnimations' onclick="setSpeedButtonValue('Super Sonic')"><a href="#">Super Sonic</a></li>
+							<li id='adjustFast' onclick="setSpeedButtonValue('Fast')"><a href="#">Fast</a></li>
+							<li id='adjustAverage' onclick="setSpeedButtonValue('Average')"><a href="#">Average</a></li>
+							<li id='adjustSlow' onclick="setSpeedButtonValue('Slow')"><a href="#">Slow</a></li>
+						</ul>
 					</li>
 
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Colors<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li id='colorButton-line'><a href="#">Lines &nbsp; &nbsp;<input type="button" id="color-button-line" class="jscolor color-button" onchange="changeColor_line(this.value)" value="11ffa0"></button></a></li>
+							<li id='colorButton-point'><a href="#">Points &nbsp;     <input type="button" id="color-button-point" class="jscolor color-button" onchange="changeColor_point(this.value)" value="34495e"></button></a></li>
+						</ul>
+					</li>
 
 					<li id='totalPointsDiv'><a href="#">Points: <input id="totalPoints" class="readOnlyInput" value="0" readonly="readonly" disabled></input></a></li>
+
 					<li id='totalPointsHullDiv'><a href="#">Points in Hull: <input id="totalHullPoints" class="readOnlyInput" value="0" readonly="readonly" disabled></input></a></li>
+
+					<li id='openTutorial' onclick="openTutorial()" title="Tutorial (H)"><a href="#"><img src="images/book-open.png" id="book-image"></a></li>
                 </ul>
             </div>
         </nav>
     </div>
 
+    <!--Welcoming Page and Tutorial-->
+    <div id="blockPage">
+	    <div id="tutorial">
+	    	<div id="tutorialCounter">1/5</div>
+	    	<h3>Welcome to Convex Hull Visualizer!</h3>
+	    	<h6><!--This short tutorial will walk you through all of the features of this application.-->Made by Erwin</h6>
+	    	<p></p>
+	    	<ul id="algorithm-list">
+	    		<li><b>Gift Wrapping</b> O(N log(N)), O(N log(N)), O(n²)</li>
+	    		<li><b>Graham Scan</b> O(N log(N))</li>
+	    		<li><b>Quickhull</b> O(N log N), O(N log N), O(n²)</li>
+	    		<li><b>Divide and Conquer</b> O(N log(N))</li>
+	    		<li><b>Monotone Chain</b> 1.Step O(N * log(N)) 2.Step O(n)</li>
+	    		<li><b>Chan's Algorithm</b> O(N log(H))</li>
+	    	</ul>
+	    	<img id="mainTutorialImage" src="images/logo.png"  style="height: 300px; width:350px">
+
+	    	<br></br>
+	    	<br></br>
+	    	<p id="note">Note: This is only a prototype. The Algorithms visualize the result of the hull but not the single steps.</p>
+
+			<button id="skipButton" class="btn btn-default navbar-btn" type="button" title="ESC" onclick="skipTutorial()">Skip Tutorial</button>
+			<button id="previousButton" class="btn btn-default navbar-btn" type="button" title="←" onclick="changePage(-1)">Previous</button>
+			<button id="nextButton" class="btn btn-default navbar-btn" type="button" title="→" onclick="changePage(1)">Next</button>
+
+	   	</div>
+	</div>
 
 	<li class="dropdown" id="context-menu" style="list-style-type:none">
 			<ul class="dropdown-menu" style="list-style-type:none">
@@ -80,21 +102,21 @@
 			</ul>
 	</li>
 
+    <div id="sandbox"></div>
 
-
-    <div id="sandbox"> </div>
-
-	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="path-container"> </svg>
-
+	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="path-container"></svg>
 
 </body>
+
+<!-- Dependencies -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="anime-master/lib/anime.min.js"></script>
+<script src="jscolor.js"></script>
 
-<script type="text/javascript" src="Options.js"></script>
 <script type="text/javascript" src="Configuration.js"></script>
+<script type="text/javascript" src="Options.js"></script>
 <script type="text/javascript" src="Point.js"></script>
 <script type="text/javascript" src="EventListener.js"></script>
 <script type="text/javascript" src="NavBarButtons.js"></script>
@@ -108,7 +130,11 @@
 <script type="text/javascript" src="Algorithms/MonotoneChain.js"></script>
 <script type="text/javascript" src="Algorithms/ChansAlgorithm.js"></script>
 
+<!--Animation Controls-->
 <script type="text/javascript" src="Algorithms/Visuals.js"></script>
+<script type="text/javascript" src="Tutorial.js"></script>
 
+<!--color change-->
+<script type="text/javascript" src="Colors.js"></script>
 
 </html>

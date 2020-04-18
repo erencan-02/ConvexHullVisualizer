@@ -1,4 +1,8 @@
-alert("BUGS: update counter | clean code");
+/*
+BUGS: update counter | clean code
+ADD/IDEAS: hold mouse down for adding points continuesly | logo | on hover animation on logo and header (left corner)
+CURRENT: tutorial menu
+*/
 
 let isRunning = false;
 
@@ -16,12 +20,11 @@ function Visualize(){
 
 	if(currentSelected == ""){
 		//error: nothing selected
-		alert("Please select an Algorithm to continue");
+		document.getElementById("actualStartButton").innerHTML = "Pick an Algorithm";
 		return;
 	}
 
-	if(points.length < 3){
-		alert("You need at least 3 points to make a Convex Hull");
+	if($('.point').length < 3){
 		return;
 	}
 
@@ -32,7 +35,6 @@ function Visualize(){
 
 	//navbar buttons get red
 	DisableButtons();
-
 
 	switch(currentSelected) {
 		case "Gift Wrapping":
@@ -50,7 +52,7 @@ function Visualize(){
 		case "Monotone Chain":
 			ConvexHull_MonotoneChain();
     		break;
-    	case "ChansAlgorithm":
+    	case "Chan\'s Algorithm":
     		ConvexHull_ChansAlgorithm();
     		break;
 		default:
@@ -80,10 +82,8 @@ function DisableButtons(){
 
 	//algorithms dropdown menu
 	var dropdown_elements = document.getElementById("algorithms-dropdown-menu").childNodes;
-	console.log(dropdown_elements);
 }
 
 function EnableButtons(){
 	document.getElementById("actualStartButton").style.backgroundColor = "#1abc9c";
-
 }

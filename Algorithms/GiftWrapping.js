@@ -51,8 +51,6 @@ function ConvexHull_GiftWrapping(){
 
 		//change classname for colorchange
 		addToHull(nxtPoint);
-
-		console.log(points);
 	}
 
 	//the first hullpoint is added twice LOL
@@ -65,7 +63,7 @@ function ConvexHull_GiftWrapping(){
 	EnableButtons();
 }
 
-function GiftWrapping_SingleStep(){
+function GiftWrapping_SingleStep(step){
 
 }
 

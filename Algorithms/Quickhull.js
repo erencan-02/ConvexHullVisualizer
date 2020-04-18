@@ -1,12 +1,3 @@
-/*
-NOTE:
-Main code is from https://github.com/claytongulick/quickhull/blob/master/quickhull.js
-I integrated it into this project 
-
-Features: Visuals (lines, colors, etc.)
-*/
-
-
 function getMinMaxPoints(pointSet) {
     var i;
     var minPoint;
