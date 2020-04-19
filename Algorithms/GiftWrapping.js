@@ -38,19 +38,17 @@ function ConvexHull_GiftWrapping(){
 	
 	//leftmost point is in hull
 	hull.push(sorted_points[0]);
-	//sorted_points.splice( sorted_points.indexOf(hull[0]), 1);
 
 	while(nxtPoint != hull[0]){
 		//find leftmost point of latest hullpoint
 		var nxtPoint = findMaxCrossProductPoint(hull[hull.length-1], sorted_points);
-
 		hull.push(nxtPoint);
-
-		//pop new hullpoint ou of point set 
-		sorted_points.splice( sorted_points.indexOf(hull[hull.length-1]), 1);
 
 		//change classname for colorchange
 		addToHull(nxtPoint);
+
+		//pop new hullpoint ou of point set 
+		sorted_points.splice( sorted_points.indexOf(hull[hull.length-1]), 1);
 	}
 
 	//the first hullpoint is added twice LOL
@@ -61,9 +59,4 @@ function ConvexHull_GiftWrapping(){
 	isRunning = false;
 	EnableButtons();
 }
-
-function GiftWrapping_SingleStep(step){
-
-}
-
 

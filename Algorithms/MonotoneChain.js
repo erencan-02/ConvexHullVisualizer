@@ -1,15 +1,14 @@
 
 function cross(a, b, o) {
-   //return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
-   return (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x)
+   return (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
 }
 
 function ConvexHull_MonotoneChain() {
 	let sorted_by_x = points.sort((a,b) => a.x - b.x);
   	var lower = [];
   	hull = [];
-
 	points = []
+
 	var nodes = $('.point');
 	for(var i = 0; i<nodes.length; i++){
 		points.push(html_point.get(nodes[i]));
@@ -32,9 +31,9 @@ function ConvexHull_MonotoneChain() {
 
 	upper.pop();
 	lower.pop();
-	
-	hull = lower.concat(upper);
 
+	//add both sets	
+	hull = lower.concat(upper);
 
 	hull.forEach(el => point_html.get(el).className = "point-hull");
 	ConnectHull();

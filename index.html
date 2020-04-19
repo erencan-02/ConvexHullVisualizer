@@ -1,12 +1,10 @@
 <html>
-
 <head>
 	<title>Convex Hull Visualizer</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link id="cssTheme" rel="stylesheet" href="index_style.css"/>
 	<link rel="shortcut icon" href="images/logo.ico">
 </head>
-
 <body>
 	<div id='navbarDiv' >
 		<nav class="navbar navbar-inverse">
@@ -19,50 +17,41 @@
 				</div>
 				<ul class="nav navbar-nav" style="position:relative; left:20px;">
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Algorithms<span class="caret"></span></a>
+						<a class="dropdown-toggle" data-toggle="dropdown">Algorithms<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li id='startButtonGift' onclick="setStartButtonValue('Gift Wrapping')" title="1"><a href="#">Gift Wrapping</a></li>
-							<li id='startButtonGraham' onclick="setStartButtonValue('Graham Scan')" title="2"><a href="#">Graham Scan</a></li>
-							<li id='startButtonQuickhull' onclick="setStartButtonValue('Quickhull')" title="3"><a href="#">Quickhull</a></li>
-							<li id='startButtonDAC' onclick="setStartButtonValue('DAC')" title="Comming soon"><a href="#">Divide and Conquer</a></li>
-							<li id='startButtonMonoChain' onclick="setStartButtonValue('Monotone Chain')" title="5"><a href="#">Monotone Chain</a></li>
-							<li id='startButtonChan' onclick="setStartButtonValue('Chan\'s Algorithm')" title="Comming soon"><a href="#">Chan's Algorithm</a></li>
+							<li id='startButtonGift' onclick="setStartButtonValue('Gift Wrapping')" title="1"><a>Gift Wrapping</a></li>
+							<li id='startButtonGraham' onclick="setStartButtonValue('Graham Scan')" title="2"><a>Graham Scan</a></li>
+							<li id='startButtonQuickhull' onclick="setStartButtonValue('Quickhull')" title="3"><a>Quickhull</a></li>
+							<li id='startButtonDAC' onclick="setStartButtonValue('DAC')" title="Comming soon"><a>Divide and Conquer</a></li>
+							<li id='startButtonMonoChain' onclick="setStartButtonValue('Monotone Chain')" title="5"><a>Monotone Chain</a></li>
+							<li id='startButtonChan' onclick="setStartButtonValue('Chan\'s Algorithm')" title="Comming soon"><a>Chan's Algorithm</a></li>
 						</ul>
 					</li>
-					
-           			<li id='startButtonClearBoard' onclick="randomPoints()" title="R"><a href="#">Random</a></li>
-					
+           			<li id='startButtonClearBoard' onclick="randomPoints()" title="R"><a>Random</a></li>
 					<li id='startButtonStart'>
 						<button id="actualStartButton" class="btn btn-default navbar-btn" type="button" title="CTRL + B" onclick="Visualize()">Visualize!</button>
 					</li>
-
-					<li id='startButtonClearBoard' title="CTRL + X" onclick="clearNodes()"><a href="#">Clear</a></li>
-
-					<li id='startButtonRemoveHull' title="CTRL + Y" onclick="removeHull()"><a href="#">Remove Hull</a></li>
-
+					<li id='startButtonClearBoard' title="CTRL + X" onclick="clearNodes()"><a>Clear</a></li>
+					<li id='startButtonRemoveHull' title="CTRL + Y" onclick="removeHull()"><a>Remove Hull</a></li>
 					<li class="dropdown">
-						<a id="adjustSpeed" class="dropdown-toggle" data-toggle="dropdown" href="#">Speed: Fast<span class="caret"></span></a>
+						<a id="adjustSpeed" class="dropdown-toggle" data-toggle="dropdown">Speed: Fast<span class="caret"></span></a>
 						<ul class="dropdown-menu" id="algorithms-dropdown-menu">
-							<li id='skipAnimations' onclick="setSpeedButtonValue('Super Sonic')"><a href="#">Super Sonic</a></li>
-							<li id='adjustFast' onclick="setSpeedButtonValue('Fast')"><a href="#">Fast</a></li>
-							<li id='adjustAverage' onclick="setSpeedButtonValue('Average')"><a href="#">Average</a></li>
-							<li id='adjustSlow' onclick="setSpeedButtonValue('Slow')"><a href="#">Slow</a></li>
+							<li id='skipAnimations' onclick="setSpeedButtonValue('Super Sonic')"><a>Super Sonic</a></li>
+							<li id='adjustFast' onclick="setSpeedButtonValue('Fast')"><a>Fast</a></li>
+							<li id='adjustAverage' onclick="setSpeedButtonValue('Average')"><a>Average</a></li>
+							<li id='adjustSlow' onclick="setSpeedButtonValue('Slow')"><a>Slow</a></li>
 						</ul>
 					</li>
-
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Colors<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li id='colorButton-line'><a href="#">Lines &nbsp; &nbsp;<input type="button" id="color-button-line" class="jscolor color-button" onchange="changeColor_line(this.value)" value="11ffa0"></button></a></li>
-							<li id='colorButton-point'><a href="#">Points &nbsp;     <input type="button" id="color-button-point" class="jscolor color-button" onchange="changeColor_point(this.value)" value="34495e"></button></a></li>
+							<li id='colorButton-line'><a>Lines &nbsp; &nbsp;<input type="button" id="color-button-line" class="jscolor color-button" onchange="changeColor_line(this.value)" value="11ffa0"></button></a></li>
+							<li id='colorButton-point'><a>Points &nbsp;     <input type="button" id="color-button-point" class="jscolor color-button" onchange="changeColor_point(this.value)" value="34495e"></button></a></li>
 						</ul>
 					</li>
-
-					<li id='totalPointsDiv'><a href="#">Points: <input id="totalPoints" class="readOnlyInput" value="0" readonly="readonly" disabled></input></a></li>
-
-					<li id='totalPointsHullDiv'><a href="#">Points in Hull: <input id="totalHullPoints" class="readOnlyInput" value="0" readonly="readonly" disabled></input></a></li>
-
-					<li id='openTutorial' onclick="openTutorial()" title="Tutorial (H)"><a href="#"><img src="images/book-open.png" id="book-image"></a></li>
+					<li id='totalPointsDiv'><a>Points: <input id="totalPoints" class="readOnlyInput" value="0" readonly="readonly" disabled></input></a></li>
+					<li id='totalPointsHullDiv'><a>Points in Hull: <input id="totalHullPoints" class="readOnlyInput" value="0" readonly="readonly" disabled></input></a></li>
+					<li id='openTutorial' onclick="openTutorial()" title="Tutorial (H)"><a><img src="images/book-open.png" id="book-image"></a></li>
                 </ul>
             </div>
         </nav>
@@ -73,7 +62,7 @@
 	    <div id="tutorial">
 	    	<div id="tutorialCounter">1/5</div>
 	    	<h3>Welcome to Convex Hull Visualizer!</h3>
-	    	<h6><!--This short tutorial will walk you through all of the features of this application.-->Made by Erwin</h6>
+	    	<h6>Made by Erwin</h6>
 	    	<p></p>
 	    	<ul id="algorithm-list">
 	    		<li><b>Gift Wrapping</b> O(N log(N)), O(N log(N)), O(n²)</li>
@@ -84,28 +73,21 @@
 	    		<li><b>Chan's Algorithm</b> O(N log(H))</li>
 	    	</ul>
 	    	<img id="mainTutorialImage" src="images/logo.png"  style="height: 300px; width:350px">
-
 	    	<br></br>
 	    	<br></br>
 	    	<p id="note">Note: This is only a prototype. The Algorithms visualize the result of the hull but not the single steps.</p>
-
 			<button id="skipButton" class="btn btn-default navbar-btn" type="button" title="ESC" onclick="skipTutorial()">Skip Tutorial</button>
 			<button id="previousButton" class="btn btn-default navbar-btn" type="button" title="←" onclick="changePage(-1)">Previous</button>
 			<button id="nextButton" class="btn btn-default navbar-btn" type="button" title="→" onclick="changePage(1)">Next</button>
-
 	   	</div>
 	</div>
-
 	<li class="dropdown" id="context-menu" style="list-style-type:none">
-			<ul class="dropdown-menu" style="list-style-type:none">
-					<li id='deleteButton' onclick="DeleteNode()"><a href="#">Delete Node<span class="glyphicon glyphicon-trash"></span></a></li>
-			</ul>
+		<ul class="dropdown-menu" style="list-style-type:none">
+			<li id='deleteButton' onclick="DeleteNode()"><a>Delete Node<span class="glyphicon glyphicon-trash"></span></a></li>
+		</ul>
 	</li>
-
     <div id="sandbox"></div>
-
 	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="path-container"></svg>
-
 </body>
 
 <!-- Dependencies -->
@@ -120,7 +102,6 @@
 <script type="text/javascript" src="Point.js"></script>
 <script type="text/javascript" src="EventListener.js"></script>
 <script type="text/javascript" src="NavBarButtons.js"></script>
-<!--<script type="text/javascript" src="DynamicInputSize.js"></script>-->
 
 <!--Algorithms-->
 <script type="text/javascript" src="Algorithms/GiftWrapping.js"></script>
@@ -136,5 +117,4 @@
 
 <!--color change-->
 <script type="text/javascript" src="Colors.js"></script>
-
 </html>

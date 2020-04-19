@@ -60,9 +60,6 @@ function AnimateLine(pathElement){
     setTimeout(function(){ return }, 3000);
 }
 
-
-//AnimateLine(document.getElementsByClassName("line")[1]);
-
 function MakeNewPath(p1, p2){
 	var svg_container = document.getElementById("path-container");
 	var newPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -74,14 +71,13 @@ function MakeNewPath(p1, p2){
 
 	var path_d = "M " + x1 + "," + y1 + " L " + x2 + "," + y2;
 
-	//path attributes
+	//set path attributes
 	newPath.setAttribute("class", "line");
 	newPath.setAttribute("d", path_d);
 	newPath.setAttribute("fill", "green");
 	newPath.setAttribute("stroke", "gray");
 
 	svg_container.append(newPath); 
-
 	AnimateLine(newPath);
 }
 

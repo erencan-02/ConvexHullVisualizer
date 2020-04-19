@@ -3,6 +3,7 @@ var totalPages = 5;
 
 
 var tutorial = document.getElementById("tutorial");
+
 //changeable objects in tutorial menu
 var tut_header_3 = tutorial.getElementsByTagName('h3')[0];
 var tut_header_6 = tutorial.getElementsByTagName('h6')[0];

@@ -1,5 +1,4 @@
 
-//no click required
 function CreateAutoPoint(x, y){	
 	var newPoint = new Point(x, y);
 	points.push(newPoint);
@@ -9,11 +8,9 @@ function CreateAutoPoint(x, y){
 	node.className = "point"
 	node.style.left = x + "px";
 	node.style.top = y + "px";
-	//node.style.zIndex = "30";
+	document.body.append(node);  
 
-	document.body.append(node);  //append to canvas bug: z-axis
-
-	//add to dictionary for acess later on
+	//add to dictionary for "cross" access
 	point_html.set(newPoint, node);
 	html_point.set(node, newPoint);
 
@@ -51,11 +48,11 @@ function randomPoints(){
 	let offset = 100;
 	//boundaries
 	x_min = canvas.left + offset;
-	x_max = canvas.left + canvas.width -2* offset;
+	x_max = canvas.left + canvas.width - 2 * offset;
 
 	y_min = canvas.top + 0.5*offset;
-	y_max = canvas.top + canvas.height - 2*offset;
-
+	y_max = canvas.top + canvas.height - 2 * offset;
+ 
 	for(var i = 0; i<n; i++){
 		var pos_x = Math.random() * x_max + x_min;
 		var pos_y = Math.random() * y_max + y_min;
@@ -72,5 +69,5 @@ function openTutorial(){
 	tutorial.style.opacity = 1;
 	blockPage.style.visibility = "visible";
 
-	changePage(-currentPage + 1);
+	changePage(-currentPage + 1); //reset page to 1
 }

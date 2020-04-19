@@ -1,11 +1,10 @@
-var latestAction;
 
 function CreateNewPoint(canvas, event) { 
 	let rect = canvas.getBoundingClientRect(); 
 
 	//offset:10, due to mouse position
-	let x = event.clientX - 10; //- rect.left; 
-	let y = event.clientY - 10; //- rect.top; 
+	let x = event.clientX - 10; 
+	let y = event.clientY - 10; 
 
 	//add new Point
 	var newPoint = new Point(x, y);
@@ -17,10 +16,9 @@ function CreateNewPoint(canvas, event) {
 	node.style.left = x + "px";
 	node.style.top = y + "px";
 
+	document.body.append(node); 
 
-	document.body.append(node);  //append to canvas bug: z-axis
-
-	//add to dictionary for acess later on
+	//add to dictionary for "cross" access
 	point_html.set(newPoint, node);
 	html_point.set(node, newPoint);
 	latestAction = newPoint;
@@ -28,20 +26,6 @@ function CreateNewPoint(canvas, event) {
 	AnimatePoint(node);
 	UpdatePointCounters();
 } 
-      
-//custom context-menu
-document.addEventListener('click',function(e){
-	//disables contextmenu
-
-	//right click on a node to open contextmenu
-	if(e.target && e.target.id == 'sandbox' && e.which == 1){
-		CreateNewPoint(document.getElementById("sandbox"), event); 
-		CloseNodeMenu();
-	}
-	else{
-		CloseNodeMenu();
-	}
-});
 
 //current option: delete node
 var selectedNode = null;
@@ -117,8 +101,7 @@ function UpdatePointCounters(){
 	changeTotalHullCount(count_pointsHull);
 }
 
-//listener for right click
-//adds point and closes context-menu
+//LISTENER: right-click
 document.addEventListener('contextmenu',function(e){
 	//disables contextmenu
 	e.preventDefault()
@@ -132,9 +115,20 @@ document.addEventListener('contextmenu',function(e){
 	}
 });
 
+//LISTENER: left-click
+document.addEventListener('click',function(e){
+	//right click on a node to open contextmenu
+	if(e.target && e.target.id == 'sandbox' && e.which == 1){
+		CreateNewPoint(document.getElementById("sandbox"), event); 
+		CloseNodeMenu();
+	}
+	else{
+		CloseNodeMenu();
+	}
+});
 
 
-//key listener
+//LISTENER: key press
 $(document).keydown(function(e) {
 	//esc
 	if (e.keyCode === 27) skipTutorial(); 

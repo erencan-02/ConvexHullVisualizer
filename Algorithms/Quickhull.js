@@ -1,3 +1,4 @@
+
 function getMinMaxPoints(pointSet) {
     var i;
     var minPoint;
@@ -30,7 +31,7 @@ function distalPoints(line, points) {
     var distance=0;
     var max_distance=0;
 
-    for(i=0; i<points.length; i++) {
+    for(i = 0; i<points.length; i++) {
         point = points[i];
         distance = distanceFromLine(point,line);
 
@@ -41,7 +42,6 @@ function distalPoints(line, points) {
             distal_point = point;
             max_distance = distance;
         }
-
     }
 
     return {points: outer_points, max: distal_point};
@@ -54,9 +54,6 @@ function addSegments(line, points) {
     addSegments([distal.max, line[1]], distal.points);
 }
 
-
-
-
 function ConvexHull_Quickhull(){
     points = []
     var nodes = $('.point');
@@ -68,7 +65,9 @@ function ConvexHull_Quickhull(){
 	var middleLine = getMinMaxPoints(points);
 
     addSegments(middleLine, points);
-    addSegments([middleLine[1], middleLine[0]], points); //reverse line direction to get points on other side
+    //reverse line direction to get points on other side
+    addSegments([middleLine[1], middleLine[0]], points);
+
     //add the last point to make a closed loop
     hull.push(hull[0]);
     hull.pop();

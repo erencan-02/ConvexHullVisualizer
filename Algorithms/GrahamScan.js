@@ -7,7 +7,7 @@ function ccw(a, b, c) {
 	//draw current point
 	//line a -> b
 	//line b -> c
-  return ((b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)) > 0;
+	return ((b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)) > 0;
 }
 
 function ConvexHull_GrahamScale(){
@@ -33,7 +33,7 @@ function ConvexHull_GrahamScale(){
 	    let getTanAngleToP0 = (p) => ((p.x - p0.x) / (p.y - p0.y));
 	    let angleA = Angle(anchor, a);
 	    let angleB = Angle(anchor, b);
-	    if (angleA == angleB) return angleA;//a.sub(p0).mag() - b.sub(p0).mag();
+	    if (angleA == angleB) return angleA;
 	    return angleA - angleB;
   	});
 
@@ -41,7 +41,6 @@ function ConvexHull_GrahamScale(){
 	let pointIndex = 0;
 	let done = 0;
 
-	//for(var i = 0; i< 2*points.length; i++){
 	while(done != points.length){
 	  	let p = sort_by_polar_angle[pointIndex];
 	  	if (p) {
