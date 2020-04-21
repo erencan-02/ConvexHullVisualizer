@@ -81,10 +81,6 @@ function MakeNewPath(p1, p2){
 	AnimateLine(newPath);
 }
 
-function DeleteNewPath(line){
-
-}
-
 function AnimatePoint(node){
 	anime({
   		targets: node,
