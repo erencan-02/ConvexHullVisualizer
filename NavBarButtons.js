@@ -1,4 +1,3 @@
-
 function CreateAutoPoint(x, y){	
 	var newPoint = new Point(x, y);
 	points.push(newPoint);
