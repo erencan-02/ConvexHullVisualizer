@@ -1,7 +1,5 @@
 var currentPage = 1;
 var totalPages = 5;
-
-
 var tutorial = document.getElementById("tutorial");
 
 //changeable objects in tutorial menu
@@ -12,7 +10,6 @@ var tut_p = tutorial.getElementsByTagName('p')[0];
 var tut_note = tutorial.getElementsByTagName('p')[1];
 var tut_image = tutorial.getElementsByTagName('img')[0];
 var tut_nextBtn = tutorial.getElementsByTagName('button')[2];
-
 
 //default
 tut_algorithms.style.display = "none";
@@ -43,7 +40,6 @@ function changePage(z){
 
 	currentPage += z;
 	document.getElementById("tutorialCounter").innerHTML = currentPage + "/" + totalPages;
-
 	tut_image.style.display = "";
 	tut_nextBtn.setAttribute('onclick','changePage(1)')
 	tut_nextBtn.innerHTML = "Next";
@@ -52,7 +48,7 @@ function changePage(z){
 
 	if(currentPage == 1){
 		tut_header_3.innerHTML = "Welcome to Convex Hull Visualizer!";
-		tut_header_6.innerHTML = "Made by Erwin";
+		tut_header_6.innerHTML = "Made by Eren Can";
 		tut_image.src = "images/logo.png";
 		tut_note.style.display = "block";
 	}else if(currentPage == 2){
@@ -76,6 +72,6 @@ function changePage(z){
 		tut_image.src = "images/tutorial/algorithms.PNG";
 		tut_image.style.width = "180px";
 		tut_nextBtn.innerHTML = "Finish";
-		tut_nextBtn.setAttribute('onclick','skipTutorial()')
+		tut_nextBtn.setAttribute('onclick','skipTutorial()');
 	}
 }
