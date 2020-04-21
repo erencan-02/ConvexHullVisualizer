@@ -1,9 +1,3 @@
-/*
-BUGS: update counter | clean code
-ADD/IDEAS: hold mouse down for adding points continuesly | logo | on hover animation on logo and header (left corner)
-CURRENT: tutorial menu
-*/
-
 let isRunning = false;
 
 function Visualize(){
@@ -17,7 +11,6 @@ function Visualize(){
 	}
 
 	//check for errors
-
 	if(currentSelected == ""){
 		//error: nothing selected
 		document.getElementById("actualStartButton").innerHTML = "Pick an Algorithm";
@@ -39,24 +32,24 @@ function Visualize(){
 	switch(currentSelected) {
 		case "Gift Wrapping":
 			ConvexHull_GiftWrapping();
-    		break;
+    			break;
 		case "Graham Scan":
 			ConvexHull_GrahamScale();
-    		break;
-    	case "Quickhull":
-    		ConvexHull_Quickhull();
-    		break;
+    			break;
+    		case "Quickhull":
+    			ConvexHull_Quickhull();
+    			break;
 		case "DAC":
 			ConvexHull_DAC();
-    		break;
+    			break;
 		case "Monotone Chain":
 			ConvexHull_MonotoneChain();
-    		break;
-    	case "Chan\'s Algorithm":
-    		ConvexHull_ChansAlgorithm();
-    		break;
+    			break;
+    		case "Chan\'s Algorithm":
+    			ConvexHull_ChansAlgorithm();
+    			break;
 		default:
-    		break;
+    			break;
 	}
 	UpdatePointCounters();
 }
