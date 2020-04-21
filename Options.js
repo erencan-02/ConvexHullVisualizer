@@ -2,8 +2,6 @@ var currentSelected = "";
 var currentSelectedSpeed = "";
 setSpeedButtonValue("Average");
 
-
-
 function setStartButtonValue(algorithmName){
 	if(isRunning){
 		return;
