@@ -1,4 +1,3 @@
-
 function CreateNewPoint(canvas, event) { 
 	let rect = canvas.getBoundingClientRect(); 
 
@@ -64,6 +63,7 @@ function DeleteNode(){
 		point_html.delete(point);
 		$(selectedNode).remove();
 		points.splice( points.indexOf(point), 1);
+		
 		//when hull without that point is possible -> make new one
 		if(points.length + hull.length  >= 3){
 			Visualize();
@@ -89,7 +89,7 @@ function DeleteNode(){
 		html_point.delete(selectedNode);
 		point_html.delete(point);
 	}
-
+	
 	UpdatePointCounters();
 }
 
